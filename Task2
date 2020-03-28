@@ -1,0 +1,43 @@
+/*"Дано словник. Вивести на екран три найбільші значення його ключів.
+ * Вхідний словник: {'item1': 45.50, 'item2':35, 'item3': 41.30, 'item4':55, 'item5': 24}.
+ * Результат програми: 
+item4 55
+item1 45.5
+item3 41.3"*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace LabaProga3._2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, double> items = new Dictionary<string, double>(5);
+            Dictionary<string, double> itemsMax = new Dictionary<string, double>(3);
+            items.Add("item1", 45.50);
+            items.Add("item2", 35);
+            items.Add("item3", 41.30);
+            items.Add("item4", 55);
+            items.Add("item5", 24);
+            foreach (KeyValuePair<string, double> keyValue in items)
+            {
+                // keyValue.Value представляет класс Person
+                Console.WriteLine( keyValue.Value);
+            }
+            Console.WriteLine( items.OrderByDescending(z => z.Value).ToDictionary(a => a, s => s).First().Value);
+            items.Remove("item4");
+            Console.WriteLine(items.OrderByDescending(z => z.Value).ToDictionary(a => a, s => s).First().Value);
+            items.Remove("item1");
+            Console.WriteLine(items.OrderByDescending(z => z.Value).ToDictionary(a => a, s => s).First().Value);
+            items.Remove("item3");
+
+
+
+
+        }
+    }
+}
