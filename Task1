@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Diagnostics;
+/*У колі стоять N людей, пронумерованих від 1 до N.
+ * При веденні рахунку по колу викреслюється кожна друга людина, поки не залишиться один.
+ * Скласти програму, що моделює процес за допомогою списків*/
+namespace LabaProga3._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите число N");
+            int size = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            List<int> list = new List<int>();
+            for (int i = 1; i < size+1; i++)
+            {
+                list.Add(i);
+            }
+            ShowList(list);
+            Console.WriteLine();
+            DeleteNext(list);
+            Console.WriteLine();
+        }
+
+        static void ShowList(List<int> list)
+        { 
+            list.ForEach(i => Console.WriteLine(i));
+        }
+
+        static void DeleteNext(List<int> list)
+        {
+
+            while (list.Count > 1)
+            {
+                for (int i = list.Count - 1; i >= 0; i -= 2)
+                {
+
+                    list.Remove(list[i]);
+
+                }
+                ShowList(list);
+                Console.WriteLine();
+                for (int i = list.Count - 2; i >= 0; i -= 2)
+                {
+
+                    list.Remove(list[i]);
+
+                }
+                ShowList(list);
+                Console.WriteLine();
+            }
+        }
+    }
+}
